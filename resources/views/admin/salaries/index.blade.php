@@ -13,10 +13,11 @@
     </div>
 
     <div class="panel-body">
-    <form action="{{route('admin.salaries.getSalaries)}}" method="post">
+    <form action="{{route('admin.salaries.getSalaries')}}" method="post">
+    {{ csrf_field() }}
     <div class="form-group col-xs-12">
             <label for="exampleFormControlSelect1">Year</label>
-            <select class="form-control" id="exampleFormControlSelect1">
+            <select class="form-control" id="exampleFormControlSelect1" name="year">
                 <option>1995</option>
                 <option>1996</option>
                 <option>1997</option>
@@ -57,7 +58,7 @@
         </div>
     <div class="form-group col-xs-12">
     <label for="exampleFormControlSelect2">Month</label>
-    <select class="form-control" id="exampleFormControlSelect2">
+    <select class="form-control" id="exampleFormControlSelect2" name="month">
       <option>1</option>
       <option>2</option>
       <option>3</option>
@@ -73,14 +74,15 @@
     </select>
   </div>
   <div class="form-group col-xs-12">
-    <input class="btn btn-primary" type="submit" value="Submit" style="margin-top: 10pxe">
+    <input class="btn btn-primary" type="submit" value="Submit" style="margin-top: 10px">
   </div>
 </form>
     </div>
 
 </div>
 </div>
-    <div class="panel panel-default col-xs-8">
+<div class="container  col-xs-12">
+<div class="panel panel-default">
         <div class="panel-heading">
             Salaries List
         </div>
@@ -89,9 +91,11 @@
             <table class="table table-bordered table-striped {{ count($salaries) > 0 ? 'datatable' : '' }}">
                 <thead>
                     <tr>
+                        <th>Employee Id</th>
                         <th>Employee Name</th>
                         <th>Attended Dates</th>
                         <th>OT Hours</th>
+                        <th>PAYE</th>
                         <th>Salary</th>
                         <th>Approved</th>
                         @if( request('show_deleted') == 1 )
@@ -107,12 +111,13 @@
                         @foreach ($salaries as $salary)
                             <tr data-entry-id="{{ $salary->id }}">
 
-
-                                <td field-key='first_name'>{{ $salary->employee->first_name }}</td>
-                                <td field-key='last_name'>{{ $salary->attendance }}</td>
-                                <td field-key='birthday'>{{ $salary->ot_hours }}</td>
-                                <td field-key='contact__no'>{{ $salary->total }}</td>
-                                <td field-key='employee_no'>{{ $salary->approved }}</td>
+                                <td>{{ $salary->employee->id }}</td>
+                                <td>{{ $salary->employee->first_name }}</td>
+                                <td >{{ $salary->attendance }}</td>
+                                <td >{{ $salary->ot_hours }}</td>
+                                <td >{{ $salary->paye}}</td>
+                                <td >{{ $salary->total }}</td>
+                                <td >{{ $salary->approved }}</td>
 
                                 <td>
                                     @if(!$salary->approved)
@@ -132,13 +137,15 @@
                         @endforeach
                     @else
                         <tr>
-                            <td colspan="12">@lang('quickadmin.qa_no_entries_in_table')</td>
+                            <td colspan="12">No enries in the table</td>
                         </tr>
                     @endif
                 </tbody>
             </table>
         </div>
     </div>
+</div>
+
 @stop
 
 @section('javascript')

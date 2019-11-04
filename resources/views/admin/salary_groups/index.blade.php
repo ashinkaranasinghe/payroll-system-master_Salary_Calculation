@@ -2,10 +2,10 @@
 @extends('layouts.app')
 
 @section('content')
-    <h3 class="page-title">@lang('quickadmin.salary-groups.title')</h3>
+    <h3 class="page-title">Salary groups</h3>
     @can('salary_group_create')
     <p>
-        <a href="{{ route('admin.salary_groups.create') }}" class="btn btn-success">@lang('quickadmin.qa_add_new')</a>
+        <a href="{{ route('admin.salary_groups.create') }}" class="btn btn-primary">Add new</a>
         
     </p>
     @endcan
@@ -22,7 +22,7 @@
 
     <div class="panel panel-default">
         <div class="panel-heading">
-            @lang('quickadmin.qa_list')
+            Salary Group List
         </div>
 
         <div class="panel-body table-responsive">
@@ -33,10 +33,10 @@
                             @if ( request('show_deleted') != 1 )<th style="text-align:center;"><input type="checkbox" id="select-all" /></th>@endif
                         @endcan
 
-                        <th>@lang('quickadmin.salary-groups.fields.name')</th>
-                        <th>@lang('quickadmin.salary-groups.fields.maximum-leave-days')</th>
-                        <th>@lang('quickadmin.salary-groups.fields.ot-rate')</th>
-                        <th>@lang('quickadmin.salary-groups.fields.salary')</th>
+                        <th>Name</th>
+                        <th>Maximum-leave-days</th>
+                        <th>Ot-rate</th>
+                        <th>salary)</th>
                         @if( request('show_deleted') == 1 )
                         <th>&nbsp;</th>
                         @else
@@ -53,26 +53,26 @@
                                     @if ( request('show_deleted') != 1 )<td></td>@endif
                                 @endcan
 
-                                <td field-key='name'>{{ $salary_group->name }}</td>
-                                <td field-key='maximum_leave_days'>{{ $salary_group->maximum_leave_days }}</td>
-                                <td field-key='ot_rate'>{{ $salary_group->ot_rate }}</td>
-                                <td field-key='salary'>{{ $salary_group->salary }}</td>
+                                <td>{{ $salary_group->name }}</td>
+                                <td>{{ $salary_group->maximum_leave_days }}</td>
+                                <td>{{ $salary_group->ot_rate }}</td>
+                                <td>{{ $salary_group->salary }}</td>
                                 @if( request('show_deleted') == 1 )
                                 <td>
                                     @can('salary_group_delete')
                                                                         {!! Form::open(array(
                                         'style' => 'display: inline-block;',
                                         'method' => 'POST',
-                                        'onsubmit' => "return confirm('".trans("quickadmin.qa_are_you_sure")."');",
+                                        'onsubmit' => "return confirm('".trans("Are you sure")."');",
                                         'route' => ['admin.salary_groups.restore', $salary_group->id])) !!}
-                                    {!! Form::submit(trans('quickadmin.qa_restore'), array('class' => 'btn btn-xs btn-success')) !!}
+                                    {!! Form::submit(trans('Restore'), array('class' => 'btn btn-xs btn-success')) !!}
                                     {!! Form::close() !!}
                                 @endcan
                                     @can('salary_group_delete')
                                                                         {!! Form::open(array(
                                         'style' => 'display: inline-block;',
                                         'method' => 'DELETE',
-                                        'onsubmit' => "return confirm('".trans("quickadmin.qa_are_you_sure")."');",
+                                        'onsubmit' => "return confirm('".trans("Are you sure")."');",
                                         'route' => ['admin.salary_groups.perma_del', $salary_group->id])) !!}
                                     {!! Form::submit(trans('quickadmin.qa_permadel'), array('class' => 'btn btn-xs btn-danger')) !!}
                                     {!! Form::close() !!}
@@ -90,9 +90,9 @@
 {!! Form::open(array(
                                         'style' => 'display: inline-block;',
                                         'method' => 'DELETE',
-                                        'onsubmit' => "return confirm('".trans("quickadmin.qa_are_you_sure")."');",
+                                        'onsubmit' => "return confirm('".trans("Are you sure")."');",
                                         'route' => ['admin.salary_groups.destroy', $salary_group->id])) !!}
-                                    {!! Form::submit(trans('quickadmin.qa_delete'), array('class' => 'btn btn-xs btn-danger')) !!}
+                                    {!! Form::submit(trans('Delete'), array('class' => 'btn btn-xs btn-danger')) !!}
                                     {!! Form::close() !!}
                                     @endcan
                                 </td>
@@ -101,7 +101,7 @@
                         @endforeach
                     @else
                         <tr>
-                            <td colspan="9">@lang('quickadmin.qa_no_entries_in_table')</td>
+                            <td colspan="9" class="text-center">No Salary groups created.</td>
                         </tr>
                     @endif
                 </tbody>

@@ -5,8 +5,9 @@ use App\Employee;
 use App\EmployeeFund;
 use App\EmployeeAttendance;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
-class UsersImport implements ToModel
+class UsersImport implements ToModel, WithHeadingRow
 {
     /**
     * @param array $row
@@ -15,23 +16,31 @@ class UsersImport implements ToModel
     */
     public function model(array $row)
     {
-        $employee = Employee::find($row[0]);
+        $employee = Employee::find($row['employee_num']);
         $epf = EmployeeFund::where('fund_name', 'epf')->first();
         $etf = EmployeeFund::where('fund_name', 'etf')->first();
         
         $epfPercentage = ($epf->employee_percentage)*0.01*($employee->salary_group->salary);
         $etfPercentage = ($etf->employee_percentage)*0.01*($employee->salary_group->salary);
         
-        $ot =  ($employee->salary_group->ot_rate) * $row[2];
-        $total = ($employee->salary_group->salary) - $epfPercentage - $etfPercentage + $ot;
+        $ot =  ($employee->salary_group->ot_rate) * $row['ot_hours'];
+
+        $paye = 0;
+        if($employee->salary_group->salary > 100000){
+            $paye = ($employee->salary_group->salary) * 0.08;
+        }
+
+        $total = ($employee->salary_group->salary) - $epfPercentage - $etfPercentage + $ot - $paye;
+        
         return new EmployeeAttendance([
-            'employee_id'     => $row[0],
-            'attendance' => $row[1],
+            'employee_id'     => $row['employee_num'],
+            'attendance' => $row['attendance'],
             'ot'        => $ot,
-            'ot_hours' => $row[2],
-            'month'    => $row[3], 
-            'year'  => $row[4],
+            'ot_hours' => $row['ot_hours'],
+            'month'    => $row['month'], 
+            'year'  => $row['year'],
             'approved' => false,
+            'paye' => $paye,
             'allowances' => 0,
             'deductions' => 0,
             'epf' => $epfPercentage,

@@ -20,6 +20,9 @@ class ImportAttendancesController extends Controller
     {
         Excel::import(new UsersImport, request()->file('file'));
         
-        return redirect('/')->with('success', 'All good!');
+        return redirect('/admin/salaries')->with('success', 'All good!');
+    }
+    public function store(){
+          
     }
 }

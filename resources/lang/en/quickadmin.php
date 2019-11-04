@@ -1,13 +1,68 @@
 <?php
 
 return [
-		'user-management' => [		'title' => 'User management',		'fields' => [		],	],
-		'roles' => [		'title' => 'Roles',		'fields' => [			'title' => 'Title',		],	],
-		'users' => [		'title' => 'Users',		'fields' => [			'name' => 'Name',			'email' => 'Email',			'password' => 'Password',			'role' => 'Role',			'remember-token' => 'Remember token',		],	],
-		'salary-groups' => [		'title' => 'Salary groups',		'fields' => [			'name' => 'Name',			'maximum-leave-days' => 'Maximum leave days',			'ot-rate' => 'Ot rate',			'salary' => 'Salary',		],	],
-		'employees' => [		'title' => 'Employees',		'fields' => [			'first-name' => 'First name',			'last-name' => 'Last name',			'birthday' => 'Birthday',			'contact-no' => 'Contact  no',			'employee-no' => 'Employee no',			'epf-no' => 'Epf no',			'salary-group' => 'Salary group',		],	],
-		'import-attendance' => [		'title' => 'Import attendance',		'fields' => [		],	],
-		'employee-funds' => [		'title' => 'Employee funds',		'fields' => [			'fund-name' => 'Fund name',			'employee-percentage' => 'Employee percentage',			'employer-percentage' => 'Employer percentage',		],	],
+	
+	'user-management' => [
+		'title' => 'User management',
+		'fields' => [
+		],
+	],
+	
+	'roles' => [
+		'title' => 'Roles',
+		'fields' => [
+			'title' => 'Title',
+		],
+	],
+	
+	'users' => [
+		'title' => 'Users',
+		'fields' => [
+			'name' => 'Name',
+			'email' => 'Email',
+			'password' => 'Password',
+			'role' => 'Role',
+			'remember-token' => 'Remember token',
+		],
+	],
+	
+	'salary-groups' => [
+		'title' => 'Salary groups',
+		'fields' => [
+			'name' => 'Name',
+			'maximum-leave-days' => 'Maximum leave days',
+			'ot-rate' => 'Ot rate',
+			'salary' => 'Salary',
+		],
+	],
+	
+	'employees' => [
+		'title' => 'Employees',
+		'fields' => [
+			'first-name' => 'First name',
+			'last-name' => 'Last name',
+			'birthday' => 'Birthday',
+			'contact-no' => 'Contact  no',
+			'employee-no' => 'Employee no',
+			'epf-no' => 'Epf no',
+			'salary-group' => 'Salary group',
+		],
+	],
+	
+	'import-attendance' => [
+		'title' => 'Import attendance',
+		'fields' => [
+		],
+	],
+	
+	'employee-funds' => [
+		'title' => 'Employee funds',
+		'fields' => [
+			'fund-name' => 'Fund name',
+			'employee-percentage' => 'Employee percentage',
+			'employer-percentage' => 'Employer percentage',
+		],
+	],
 	'qa_create' => 'Create',
 	'qa_save' => 'Save',
 	'qa_edit' => 'Edit',

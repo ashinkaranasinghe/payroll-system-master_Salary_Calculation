@@ -18,20 +18,11 @@ class SalaryGroupsController extends Controller
      */
     public function index()
     {
-        if (! Gate::allows('salary_group_access')) {
-            return abort(401);
-        }
-
-
         if (request('show_deleted') == 1) {
-            if (! Gate::allows('salary_group_delete')) {
-                return abort(401);
-            }
             $salary_groups = SalaryGroup::onlyTrashed()->get();
         } else {
             $salary_groups = SalaryGroup::all();
         }
-
         return view('admin.salary_groups.index', compact('salary_groups'));
     }
 

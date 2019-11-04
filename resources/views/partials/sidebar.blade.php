@@ -10,54 +10,49 @@
             <li class="{{ $request->segment(1) == 'home' ? 'active' : '' }}">
                 <a href="{{ url('/') }}">
                     <i class="fa fa-wrench"></i>
-                    <span class="title">@lang('quickadmin.qa_dashboard')</span>
+                    <span class="title">Dashboard</span>
                 </a>
             </li>
 
-            @can('user_management_access')
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-users"></i>
-                    <span>@lang('quickadmin.user-management.title')</span>
+                    <span>User management</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    @can('role_access')
                     <li>
                         <a href="{{ route('admin.roles.index') }}">
                             <i class="fa fa-briefcase"></i>
-                            <span>@lang('quickadmin.roles.title')</span>
+                            <span>Roles</span>
                         </a>
-                    </li>@endcan
+                    </li>
                     
-                    @can('user_access')
                     <li>
                         <a href="{{ route('admin.users.index') }}">
                             <i class="fa fa-user"></i>
-                            <span>@lang('quickadmin.users.title')</span>
+                            <span>Users</span>
                         </a>
-                    </li>@endcan
+                    </li>
                     
                 </ul>
-            </li>@endcan
+            </li>
             
-            @can('salary_group_access')
             <li>
                 <a href="{{ route('admin.salary_groups.index') }}">
                     <i class="fa fa-group"></i>
-                    <span>@lang('quickadmin.salary-groups.title')</span>
+                    <span>Salary Groups</span>
                 </a>
-            </li>@endcan
+            </li>
             
-            @can('employee_access')
             <li>
                 <a href="{{ route('admin.employees.index') }}">
                     <i class="fa fa-user"></i>
-                    <span>@lang('quickadmin.employees.title')</span>
+                    <span>Employees</span>
                 </a>
-            </li>@endcan
+            </li>
             
             <li>
                 <a href="{{ route('admin.import_attendances.index') }}">
@@ -66,13 +61,12 @@
                 </a>
             </li>
             
-            @can('employee_fund_access')
             <li>
                 <a href="{{ route('admin.employee_funds.index') }}">
                     <i class="fa fa-money"></i>
-                    <span>@lang('quickadmin.employee-funds.title')</span>
+                    <span>Employee-funds</span>
                 </a>
-            </li>@endcan
+            </li>
             
             <li>
                 <a href="{{ route('admin.salaries.index') }}">
@@ -82,21 +76,20 @@
             </li>
             
 
-            
 
 
 
             <li class="{{ $request->segment(1) == 'change_password' ? 'active' : '' }}">
                 <a href="{{ route('auth.change_password') }}">
                     <i class="fa fa-key"></i>
-                    <span class="title">@lang('quickadmin.qa_change_password')</span>
+                    <span class="title">Change Password</span>
                 </a>
             </li>
 
             <li>
                 <a href="#logout" onclick="$('#logout').submit();">
                     <i class="fa fa-arrow-left"></i>
-                    <span class="title">@lang('quickadmin.qa_logout')</span>
+                    <span class="title">Logout</span>
                 </a>
             </li>
         </ul>

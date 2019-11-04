@@ -20,6 +20,7 @@ class SalaryController extends Controller
      */
     public function index()
     {
+        
         $salaries = EmployeeAttendance::all();
         return view('admin.salaries.index', compact('salaries'));
     }
@@ -83,8 +84,9 @@ class SalaryController extends Controller
 
     public function getSalaries(Request $request)
     {
-        dd($request);
-        $salaries = EmployeeAttendance::where('month', '=', 1)->where('year', '=', 1);
+        $year = $request['year'];
+        $month = $request['month'];
+        $salaries = EmployeeAttendance::where('month', '=', $month)->where('year', '=', $year)->get();
         return view('admin.salaries.index', compact('salaries'));
     }
 
