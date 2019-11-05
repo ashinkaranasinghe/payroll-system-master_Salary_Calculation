@@ -6,7 +6,7 @@
         <div style="margin-bottom: 10px;" class="row">
             <div class="col-lg-12">
                 <a class="btn btn-success" href="{{ route("admin.allowances.create") }}">
-                    {{ trans('global.add') }} {{ trans('cruds.allowance.title_singular') }}
+                    Add Allowances
                 </a>
             </div>
         </div>
@@ -16,7 +16,7 @@
 
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    {{ trans('cruds.allowance.title_singular') }} {{ trans('global.list') }}
+                    Allowances List
                 </div>
                 <div class="panel-body">
 
@@ -28,19 +28,19 @@
 
                                     </th>
                                     <th>
-                                        {{ trans('cruds.allowance.fields.id') }}
+                                        Field Id
                                     </th>
                                     <th>
-                                        {{ trans('cruds.allowance.fields.employee') }}
+                                        Employee Id
                                     </th>
                                     <th>
-                                        {{ trans('cruds.allowance.fields.year') }}
+                                        Year
                                     </th>
                                     <th>
-                                        {{ trans('cruds.allowance.fields.month') }}
+                                        Month
                                     </th>
                                     <th>
-                                        {{ trans('cruds.allowance.fields.amount') }}
+                                        Amount
                                     </th>
                                     <th>
                                         &nbsp;

@@ -7,14 +7,14 @@
 
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    {{ trans('global.create') }} {{ trans('cruds.allowance.title_singular') }}
+                    New Allowance
                 </div>
                 <div class="panel-body">
 
                     <form action="{{ route("admin.allowances.store") }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group {{ $errors->has('employee_id') ? 'has-error' : '' }}">
-                            <label for="employee">{{ trans('cruds.allowance.fields.employee') }}*</label>
+                            <label for="employee">Employee No*</label>
                             <select name="employee_id" id="employee" class="form-control select2" required>
                                 @foreach($employees as $id => $employee)
                                     <option value="{{ $id }}" {{ (isset($allowance) && $allowance->employee ? $allowance->employee->id : old('employee_id')) == $id ? 'selected' : '' }}>{{ $employee }}</option>
@@ -27,7 +27,7 @@
                             @endif
                         </div>
                         <div class="form-group {{ $errors->has('year') ? 'has-error' : '' }}">
-                            <label for="year">{{ trans('cruds.allowance.fields.year') }}</label>
+                            <label for="year">Year</label>
                             <select id="year" name="year" class="form-control">
                                 <option value="" disabled {{ old('year', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
                                 @foreach(App\Allowance::YEAR_SELECT as $key => $label)
@@ -41,7 +41,7 @@
                             @endif
                         </div>
                         <div class="form-group {{ $errors->has('month') ? 'has-error' : '' }}">
-                            <label for="month">{{ trans('cruds.allowance.fields.month') }}*</label>
+                            <label for="month">Month*</label>
                             <select id="month" name="month" class="form-control" required>
                                 <option value="" disabled {{ old('month', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
                                 @foreach(App\Allowance::MONTH_SELECT as $key => $label)
@@ -55,19 +55,17 @@
                             @endif
                         </div>
                         <div class="form-group {{ $errors->has('amount') ? 'has-error' : '' }}">
-                            <label for="amount">{{ trans('cruds.allowance.fields.amount') }}*</label>
+                            <label for="amount">Amount*</label>
                             <input type="number" id="amount" name="amount" class="form-control" value="{{ old('amount', isset($allowance) ? $allowance->amount : '') }}" step="0.01" required>
                             @if($errors->has('amount'))
                                 <p class="help-block">
                                     {{ $errors->first('amount') }}
                                 </p>
                             @endif
-                            <p class="helper-block">
-                                {{ trans('cruds.allowance.fields.amount_helper') }}
-                            </p>
+
                         </div>
                         <div>
-                            <input class="btn btn-danger" type="submit" value="{{ trans('global.save') }}">
+                            <input class="btn btn-danger" type="submit" value="Save">
                         </div>
                     </form>
 

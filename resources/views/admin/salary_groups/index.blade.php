@@ -36,7 +36,7 @@
                         <th>Name</th>
                         <th>Maximum-leave-days</th>
                         <th>Ot-rate</th>
-                        <th>salary)</th>
+                        <th>salary</th>
                         @if( request('show_deleted') == 1 )
                         <th>&nbsp;</th>
                         @else

@@ -30,10 +30,10 @@ class UsersImport implements ToModel, WithHeadingRow
         if($employee->salary_group->salary > 100000){
             $paye = ($employee->salary_group->salary) * 0.08;
         }
-
-        $total = ($employee->salary_group->salary) - $epfPercentage - $etfPercentage + $ot - $paye;
-        
         $allowances = Allowance::where([['employee_id', '=',$row['employee_num']],['year', '=',$row['year']],['month', '=',$row['month']]])->sum('amount');
+        $total = ($employee->salary_group->salary) - $epfPercentage - $etfPercentage + $ot - $paye +$allowances;
+        
+        
         
         return new EmployeeAttendance([
             'employee_id'     => $row['employee_num'],
