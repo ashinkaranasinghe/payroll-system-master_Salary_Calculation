@@ -21,6 +21,7 @@ class CreateEmployeeAttendancesTable extends Migration
             $table->integer('ot_hours');
             $table->float('allowances', 8, 2);
             $table->float('deductions', 8, 2);
+            $table->float('advances', 8, 2);
             $table->float('epf', 8, 2);
             $table->float('paye', 8, 2);
             $table->float('etf', 8, 2);

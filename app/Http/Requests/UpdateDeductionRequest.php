@@ -11,7 +11,6 @@ class UpdateDeductionRequest extends FormRequest
 {
     public function authorize()
     {
-        abort_if(Gate::denies('deduction_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return true;
     }

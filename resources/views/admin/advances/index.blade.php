@@ -1,15 +1,15 @@
-@extends('layouts.admin')
+@extends('layouts.app')
 @section('content')
 <div class="content">
-    @can('advance_create')
+
         <div style="margin-bottom: 10px;" class="row">
             <div class="col-lg-12">
-                <a class="btn btn-success" href="{{ route("admin.advances.create") }}">
-                    {{ trans('global.add') }} {{ trans('cruds.advance.title_singular') }}
+                <a class="btn btn-primary" href="{{ route("admin.advances.create") }}">
+                    New Advance
                 </a>
             </div>
         </div>
-    @endcan
+
     <div class="row">
         <div class="col-lg-12">
 
@@ -68,25 +68,23 @@
                                             {{ $advance->amount ?? '' }}
                                         </td>
                                         <td>
-                                            @can('advance_show')
+
                                                 <a class="btn btn-xs btn-primary" href="{{ route('admin.advances.show', $advance->id) }}">
                                                     {{ trans('global.view') }}
                                                 </a>
-                                            @endcan
 
-                                            @can('advance_edit')
                                                 <a class="btn btn-xs btn-info" href="{{ route('admin.advances.edit', $advance->id) }}">
                                                     {{ trans('global.edit') }}
                                                 </a>
-                                            @endcan
 
-                                            @can('advance_delete')
+
+      
                                                 <form action="{{ route('admin.advances.destroy', $advance->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
                                                     <input type="hidden" name="_method" value="DELETE">
                                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                                     <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
                                                 </form>
-                                            @endcan
+
 
                                         </td>
 
@@ -109,7 +107,6 @@
 <script>
     $(function () {
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
-@can('advance_delete')
   let deleteButtonTrans = '{{ trans('global.datatables.delete') }}'
   let deleteButton = {
     text: deleteButtonTrans,
@@ -137,7 +134,6 @@
     }
   }
   dtButtons.push(deleteButton)
-@endcan
 
   $.extend(true, $.fn.dataTable.defaults, {
     order: [[ 1, 'desc' ]],

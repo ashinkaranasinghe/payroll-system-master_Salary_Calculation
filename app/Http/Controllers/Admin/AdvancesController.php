@@ -24,7 +24,6 @@ class AdvancesController extends Controller
 
     public function create()
     {
-        abort_if(Gate::denies('advance_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $employees = Employee::all()->pluck('employee_no', 'id')->prepend(trans('global.pleaseSelect'), '');
 
@@ -40,7 +39,6 @@ class AdvancesController extends Controller
 
     public function edit(Advance $advance)
     {
-        abort_if(Gate::denies('advance_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $employees = Employee::all()->pluck('employee_no', 'id')->prepend(trans('global.pleaseSelect'), '');
 
@@ -58,7 +56,6 @@ class AdvancesController extends Controller
 
     public function show(Advance $advance)
     {
-        abort_if(Gate::denies('advance_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $advance->load('employee');
 
@@ -67,7 +64,6 @@ class AdvancesController extends Controller
 
     public function destroy(Advance $advance)
     {
-        abort_if(Gate::denies('advance_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $advance->delete();
 

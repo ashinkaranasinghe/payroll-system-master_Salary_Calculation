@@ -7,7 +7,7 @@ use App\SalaryGroup;
 
 class EmployeeAttendance extends Model
 {
-    public $fillable = ['employee_id','ot_hours','ot','month','attendance','allowances','deductions','epf','etf','total','approved','month','year','paye'];
+    public $fillable = ['employee_id','ot_hours','ot','month','attendance','allowances','deductions','advances','epf','etf','total','approved','month','year','paye'];
     protected $table = 'employee_salaries';
     public function salaryGroup()
     {

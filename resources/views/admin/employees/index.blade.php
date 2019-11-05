@@ -5,7 +5,7 @@
     <h3 class="page-title">@lang('quickadmin.employees.title')</h3>
     @can('employee_create')
     <p>
-        <a href="{{ route('admin.employees.create') }}" class="btn btn-success">@lang('quickadmin.qa_add_new')</a>
+        <a href="{{ route('admin.employees.create') }}" class="btn btn-primary">@lang('quickadmin.qa_add_new')</a>
         
     </p>
     @endcan

@@ -5,6 +5,8 @@ use App\Employee;
 use App\EmployeeFund;
 use App\EmployeeAttendance;
 use App\Allowance;
+use App\Deduction;
+use App\Advance;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
@@ -31,9 +33,9 @@ class UsersImport implements ToModel, WithHeadingRow
             $paye = ($employee->salary_group->salary) * 0.08;
         }
         $allowances = Allowance::where([['employee_id', '=',$row['employee_num']],['year', '=',$row['year']],['month', '=',$row['month']]])->sum('amount');
-        $total = ($employee->salary_group->salary) - $epfPercentage - $etfPercentage + $ot - $paye +$allowances;
-        
-        
+        $deductions = Deduction::where([['employee_id', '=',$row['employee_num']],['year', '=',$row['year']],['month', '=',$row['month']]])->sum('amount');
+        $advances = Advance::where([['employee_id', '=',$row['employee_num']],['year', '=',$row['year']],['month', '=',$row['month']]])->sum('amount');
+        $total = ($employee->salary_group->salary) - $epfPercentage - $etfPercentage + $ot - $paye + $allowances - $deductions - $advances;
         
         return new EmployeeAttendance([
             'employee_id'     => $row['employee_num'],
@@ -45,7 +47,8 @@ class UsersImport implements ToModel, WithHeadingRow
             'approved' => false,
             'paye' => $paye,
             'allowances' => $allowances,
-            'deductions' => 0,
+            'deductions' => $deductions,
+            'advances' => $advances,
             'epf' => $epfPercentage,
             'etf' => $etfPercentage,
             'total' => $total

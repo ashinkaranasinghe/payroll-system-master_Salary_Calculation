@@ -11,8 +11,6 @@ class UpdateAllowanceRequest extends FormRequest
 {
     public function authorize()
     {
-        abort_if(Gate::denies('allowance_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
         return true;
     }
 

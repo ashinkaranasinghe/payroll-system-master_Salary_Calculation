@@ -24,7 +24,6 @@ class DeductionsController extends Controller
 
     public function create()
     {
-        abort_if(Gate::denies('deduction_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $employees = Employee::all()->pluck('employee_no', 'id')->prepend(trans('global.pleaseSelect'), '');
 
@@ -40,7 +39,6 @@ class DeductionsController extends Controller
 
     public function edit(Deduction $deduction)
     {
-        abort_if(Gate::denies('deduction_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $employees = Employee::all()->pluck('employee_no', 'id')->prepend(trans('global.pleaseSelect'), '');
 
@@ -58,7 +56,6 @@ class DeductionsController extends Controller
 
     public function show(Deduction $deduction)
     {
-        abort_if(Gate::denies('deduction_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $deduction->load('employee');
 
@@ -67,7 +64,6 @@ class DeductionsController extends Controller
 
     public function destroy(Deduction $deduction)
     {
-        abort_if(Gate::denies('deduction_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $deduction->delete();
 
