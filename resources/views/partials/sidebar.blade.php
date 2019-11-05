@@ -76,6 +76,31 @@
             </li>
             
 
+                <li class="{{ request()->is('admin/allowances') || request()->is('admin/allowances/*') ? 'active' : '' }}">
+                    <a href="{{ route("admin.allowances.index") }}">
+                        <i class="fa fas fa-cogs">
+
+                        </i>
+                        <span>Allowances</span>
+                    </a>
+                </li>
+                <li class="{{ request()->is('admin/deductions') || request()->is('admin/deductions/*') ? 'active' : '' }}">
+                    <a href="{{ route("admin.deductions.index") }}">
+                        <i class="fa fa-cogs">
+
+                        </i>
+                        <span>Deductions</span>
+                    </a>
+                </li>
+
+                <li class="{{ request()->is('admin/advances') || request()->is('admin/advances/*') ? 'active' : '' }}">
+                    <a href="{{ route("admin.advances.index") }}">
+                        <i class="fa fa-cogs">
+
+                        </i>
+                        <span>Advances</span>
+                    </a>
+                </li>
 
 
 

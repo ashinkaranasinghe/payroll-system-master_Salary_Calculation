@@ -4,6 +4,7 @@ namespace App\Imports;
 use App\Employee;
 use App\EmployeeFund;
 use App\EmployeeAttendance;
+use App\Allowance;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
@@ -32,6 +33,8 @@ class UsersImport implements ToModel, WithHeadingRow
 
         $total = ($employee->salary_group->salary) - $epfPercentage - $etfPercentage + $ot - $paye;
         
+        $allowances = Allowance::where([['employee_id', '=',$row['employee_num']],['year', '=',$row['year']],['month', '=',$row['month']]])->sum('amount');
+        
         return new EmployeeAttendance([
             'employee_id'     => $row['employee_num'],
             'attendance' => $row['attendance'],
@@ -41,7 +44,7 @@ class UsersImport implements ToModel, WithHeadingRow
             'year'  => $row['year'],
             'approved' => false,
             'paye' => $paye,
-            'allowances' => 0,
+            'allowances' => $allowances,
             'deductions' => 0,
             'epf' => $epfPercentage,
             'etf' => $etfPercentage,

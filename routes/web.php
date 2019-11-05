@@ -42,6 +42,16 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::get('salaries/approve/{id}',['uses' => 'Admin\SalaryController@approve', 'as' => 'salaries.approve']);
     Route::post('getSalaries', ['uses' => 'Admin\SalaryController@getSalaries', 'as' => 'salaries.getSalaries']);
 
-
+            // Allowances
+            Route::delete('allowances/destroy', 'AllowancesController@massDestroy')->name('allowances.massDestroy');
+            Route::resource('allowances', 'Admin\AllowancesController');
+        
+            // Deductions
+            Route::delete('deductions/destroy', 'DeductionsController@massDestroy')->name('deductions.massDestroy');
+            Route::resource('deductions', 'Admin\DeductionsController');
+        
+            // Advances
+            Route::delete('advances/destroy', 'AdvancesController@massDestroy')->name('advances.massDestroy');
+            Route::resource('advances', 'Admin\AdvancesController');
  
 });
