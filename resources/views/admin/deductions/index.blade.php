@@ -26,20 +26,18 @@
                                     <th width="10">
 
                                     </th>
+                                    
                                     <th>
-                                        {{ trans('cruds.deduction.fields.id') }}
+                                        Employee Id
                                     </th>
                                     <th>
-                                        {{ trans('cruds.deduction.fields.employee') }}
+                                        Year
                                     </th>
                                     <th>
-                                        {{ trans('cruds.deduction.fields.year') }}
+                                        Month
                                     </th>
                                     <th>
-                                        {{ trans('cruds.deduction.fields.month') }}
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.deduction.fields.amount') }}
+                                        amount
                                     </th>
                                     <th>
                                         &nbsp;
@@ -52,9 +50,7 @@
                                         <td>
 
                                         </td>
-                                        <td>
-                                            {{ $deduction->id ?? '' }}
-                                        </td>
+                                       
                                         <td>
                                             {{ $deduction->employee->employee_no ?? '' }}
                                         </td>

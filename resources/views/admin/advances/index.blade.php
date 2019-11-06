@@ -26,20 +26,18 @@
                                     <th width="10">
 
                                     </th>
+                                    
                                     <th>
-                                        {{ trans('cruds.advance.fields.id') }}
+                                        Employee Id
                                     </th>
                                     <th>
-                                        {{ trans('cruds.advance.fields.employee') }}
+                                        Year
                                     </th>
                                     <th>
-                                        {{ trans('cruds.advance.fields.year') }}
+                                        Month
                                     </th>
                                     <th>
-                                        {{ trans('cruds.advance.fields.month') }}
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.advance.fields.amount') }}
+                                      Amount
                                     </th>
                                     <th>
                                         &nbsp;
@@ -52,9 +50,7 @@
                                         <td>
 
                                         </td>
-                                        <td>
-                                            {{ $advance->id ?? '' }}
-                                        </td>
+                                        
                                         <td>
                                             {{ $advance->employee->employee_no ?? '' }}
                                         </td>

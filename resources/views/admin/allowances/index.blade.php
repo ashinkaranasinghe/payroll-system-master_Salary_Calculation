@@ -27,9 +27,7 @@
                                     <th width="10">
 
                                     </th>
-                                    <th>
-                                        Field Id
-                                    </th>
+                                    
                                     <th>
                                         Employee Id
                                     </th>
@@ -53,9 +51,7 @@
                                         <td>
 
                                         </td>
-                                        <td>
-                                            {{ $allowance->id ?? '' }}
-                                        </td>
+                                       
                                         <td>
                                             {{ $allowance->employee->employee_no ?? '' }}
                                         </td>
