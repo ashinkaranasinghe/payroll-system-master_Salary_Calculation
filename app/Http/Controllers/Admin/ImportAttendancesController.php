@@ -23,6 +23,10 @@ class ImportAttendancesController extends Controller
         return redirect('/admin/salaries')->with('success', 'All good!');
     }
     public function store(){
+        $data=request()->validate([
+
+            'file'=>['required','file'],
+        ]);
           
     }
 }
